@@ -5,13 +5,15 @@ type SendPulse = () => void;
 type UseSendDigital = [boolean, SendDigital, SendPulse];
 
 export default function useSendDigital(id: string | number): UseSendDigital {
-  const [digitalState, setDigitaltate] = useState(false);
+  const [digitalState, setDigitalState] = useState(false);
 
   useEffect(() => {
     const a1Id = window.CrComLib.subscribeState(
       "b",
       id.toString(),
-      (value: boolean) => setDigitaltate(value)
+      (value: boolean) => {
+        setDigitalState(value);
+      }
     );
 
     return () => {
@@ -21,7 +23,7 @@ export default function useSendDigital(id: string | number): UseSendDigital {
 
   const sendDigital: SendDigital = (value: boolean) => {
     window.CrComLib.publishEvent("b", id.toString(), value);
-    setDigitaltate(value);
+    //setDigitalState(value);
   };
 
   const sendPulse: SendPulse = () => {
