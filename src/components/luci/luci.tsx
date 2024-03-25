@@ -1,12 +1,12 @@
 import { Button } from "antd";
 import { FunctionComponent } from "react";
-import useSendDigital from "../hooks/use-send-digital";
-import useSendAnalog from "../hooks/use-send-analog";
-import useSendSerial from "../hooks/use-send-serial";
+import useSendDigital from "../../hooks/use-send-digital";
+import useSendAnalog from "../../hooks/use-send-analog";
+import useSendSerial from "../../hooks/use-send-serial";
 
-interface TestComponentProps {}
+interface LuciComponentProps {}
 
-const TestComponent: FunctionComponent<TestComponentProps> = () => {
+const LuciComponent: FunctionComponent<LuciComponentProps> = () => {
   const [digitalState, sendDigital] = useSendDigital(1);
   const [analogState, sendAnalog] = useSendAnalog(1);
   const [serialState, sendSerial] = useSendSerial(1);
@@ -49,4 +49,4 @@ const TestComponent: FunctionComponent<TestComponentProps> = () => {
   );
 };
 
-export default TestComponent;
+export default LuciComponent;
