@@ -1,6 +1,7 @@
 import "./assets/App.css";
 import { useState, useEffect, useMemo } from "react";
 import useWebXPanel from "./hooks/useWebXPanel";
+import { Button } from "antd";
 
 // Initialize eruda for panel/app debugging capabilities (in dev mode only)
 if (import.meta.env.VITE_APP_ENV === "development") {
@@ -61,13 +62,13 @@ function App() {
   return (
     <div id="controlGroupWrapper">
       <div className="controlGroup">
-        <button
+        <Button
           id="sendDigitalButton"
           className="btn"
           onClick={() => sendDigital(!digitalState)}
         >
           Toggle Digital
-        </button>
+        </Button>
         <p id="currentDigitalValue">{digitalState.toString()}</p>
       </div>
       <div className="controlGroup">
