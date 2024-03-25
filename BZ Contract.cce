@@ -1,0 +1,337 @@
+{
+	"Errors": [],
+	"id": "_og2t5u5rc",
+	"name": "BZ Contract",
+	"description": "",
+	"company": "",
+	"client": "",
+	"author": "",
+	"version": "1.0.0.0",
+	"schemaVersion": 1,
+	"subContractLinks": [],
+	"subContracts": [],
+	"specifications": [
+		{
+			"Errors": [],
+			"parentId": "_og2t5u5rc",
+			"id": "_rg5vooikq",
+			"componentId": "_dgzu2xspr",
+			"instanceName": "Lighting zone",
+			"numberOfInstances": 40
+		}
+	],
+	"components": [
+		{
+			"Errors": [],
+			"parentId": "_og2t5u5rc",
+			"id": "_vibys9wzo",
+			"name": "Lighting channel",
+			"commands": [
+				{
+					"Errors": [],
+					"name": "is dimmer",
+					"siblingId": "_8b2qzvcn7",
+					"dataType": 1,
+					"notes": "",
+					"id": "_yzlhfqiir",
+					"parentId": "_vibys9wzo",
+					"attributeType": 0
+				},
+				{
+					"Errors": [],
+					"name": "is on",
+					"siblingId": "_13lqi3h3x",
+					"dataType": 1,
+					"notes": "",
+					"id": "_cmcst192i",
+					"parentId": "_vibys9wzo",
+					"attributeType": 0
+				},
+				{
+					"Errors": [],
+					"name": "is off",
+					"siblingId": "_vjd51fgaf",
+					"dataType": 1,
+					"notes": "",
+					"id": "_vf91vsnt4",
+					"parentId": "_vibys9wzo",
+					"attributeType": 0
+				},
+				{
+					"Errors": [],
+					"name": "",
+					"siblingId": "_prbj1m3n2",
+					"dataType": 1,
+					"notes": "",
+					"id": "_knd7xq5xw",
+					"parentId": "_vibys9wzo",
+					"attributeType": 0
+				},
+				{
+					"Errors": [],
+					"name": "current value",
+					"siblingId": "_3dwzbw0md",
+					"dataType": 2,
+					"notes": "",
+					"id": "_76xdhymfv",
+					"parentId": "_vibys9wzo",
+					"attributeType": 0
+				},
+				{
+					"Errors": [],
+					"name": "name",
+					"siblingId": "_upx3e89j5",
+					"dataType": 3,
+					"notes": "",
+					"id": "_yrb6g4qcn",
+					"parentId": "_vibys9wzo",
+					"attributeType": 0
+				},
+				{
+					"Errors": [],
+					"name": "ris1",
+					"siblingId": "_m4bt5iif2",
+					"dataType": 1,
+					"notes": "",
+					"id": "_yrwjbajeh",
+					"parentId": "_vibys9wzo",
+					"attributeType": 0
+				},
+				{
+					"Errors": [],
+					"name": "ris2",
+					"siblingId": "_b2kvn0xlx",
+					"dataType": 1,
+					"notes": "",
+					"id": "_svpbhszx3",
+					"parentId": "_vibys9wzo",
+					"attributeType": 0
+				},
+				{
+					"Errors": [],
+					"name": "ris3",
+					"siblingId": "_aw8htg8jo",
+					"dataType": 2,
+					"notes": "",
+					"id": "_dxfexe2nc",
+					"parentId": "_vibys9wzo",
+					"attributeType": 0
+				},
+				{
+					"Errors": [],
+					"name": "ris4",
+					"siblingId": "_zxp498f6j",
+					"dataType": 2,
+					"notes": "",
+					"id": "_nrym37bk8",
+					"parentId": "_vibys9wzo",
+					"attributeType": 0
+				},
+				{
+					"Errors": [],
+					"name": "ris5",
+					"siblingId": "_3fv4661cr",
+					"dataType": 1,
+					"notes": "",
+					"id": "_gdam7si88",
+					"parentId": "_vibys9wzo",
+					"attributeType": 0
+				},
+				{
+					"Errors": [],
+					"name": "ris6",
+					"siblingId": "_jfhukbs9w",
+					"dataType": 1,
+					"notes": "",
+					"id": "_wicamosa1",
+					"parentId": "_vibys9wzo",
+					"attributeType": 0
+				}
+			],
+			"feedbacks": [
+				{
+					"Errors": [],
+					"name": "",
+					"siblingId": "_yzlhfqiir",
+					"dataType": 0,
+					"notes": "",
+					"id": "_8b2qzvcn7",
+					"parentId": "_vibys9wzo",
+					"attributeType": 1
+				},
+				{
+					"Errors": [],
+					"name": "set on",
+					"siblingId": "_cmcst192i",
+					"dataType": 1,
+					"notes": "",
+					"id": "_13lqi3h3x",
+					"parentId": "_vibys9wzo",
+					"attributeType": 1
+				},
+				{
+					"Errors": [],
+					"name": "set off",
+					"siblingId": "_vf91vsnt4",
+					"dataType": 1,
+					"notes": "",
+					"id": "_vjd51fgaf",
+					"parentId": "_vibys9wzo",
+					"attributeType": 1
+				},
+				{
+					"Errors": [],
+					"name": "toggle",
+					"siblingId": "_knd7xq5xw",
+					"dataType": 1,
+					"notes": "",
+					"id": "_prbj1m3n2",
+					"parentId": "_vibys9wzo",
+					"attributeType": 1
+				},
+				{
+					"Errors": [],
+					"name": "set value",
+					"siblingId": "_76xdhymfv",
+					"dataType": 2,
+					"notes": "",
+					"id": "_3dwzbw0md",
+					"parentId": "_vibys9wzo",
+					"attributeType": 1
+				},
+				{
+					"Errors": [],
+					"name": "",
+					"siblingId": "_yrb6g4qcn",
+					"dataType": 0,
+					"notes": "",
+					"id": "_upx3e89j5",
+					"parentId": "_vibys9wzo",
+					"attributeType": 1
+				},
+				{
+					"Errors": [],
+					"name": "",
+					"siblingId": "_yrwjbajeh",
+					"dataType": 0,
+					"notes": "",
+					"id": "_m4bt5iif2",
+					"parentId": "_vibys9wzo",
+					"attributeType": 1
+				},
+				{
+					"Errors": [],
+					"name": "",
+					"siblingId": "_svpbhszx3",
+					"dataType": 0,
+					"notes": "",
+					"id": "_b2kvn0xlx",
+					"parentId": "_vibys9wzo",
+					"attributeType": 1
+				},
+				{
+					"Errors": [],
+					"name": "",
+					"siblingId": "_dxfexe2nc",
+					"dataType": 0,
+					"notes": "",
+					"id": "_aw8htg8jo",
+					"parentId": "_vibys9wzo",
+					"attributeType": 1
+				},
+				{
+					"Errors": [],
+					"name": "",
+					"siblingId": "_nrym37bk8",
+					"dataType": 0,
+					"notes": "",
+					"id": "_zxp498f6j",
+					"parentId": "_vibys9wzo",
+					"attributeType": 1
+				},
+				{
+					"Errors": [],
+					"name": "",
+					"siblingId": "_gdam7si88",
+					"dataType": 0,
+					"notes": "",
+					"id": "_3fv4661cr",
+					"parentId": "_vibys9wzo",
+					"attributeType": 1
+				},
+				{
+					"Errors": [],
+					"name": "",
+					"siblingId": "_wicamosa1",
+					"dataType": 0,
+					"notes": "",
+					"id": "_jfhukbs9w",
+					"parentId": "_vibys9wzo",
+					"attributeType": 1
+				}
+			],
+			"specifications": []
+		},
+		{
+			"Errors": [],
+			"parentId": "_og2t5u5rc",
+			"id": "_dgzu2xspr",
+			"name": "Lighting zone",
+			"commands": [
+				{
+					"Errors": [],
+					"name": "zone is on",
+					"siblingId": "_wvew5dew4",
+					"dataType": 1,
+					"notes": "",
+					"id": "_6o2ln73q7",
+					"parentId": "_dgzu2xspr",
+					"attributeType": 0
+				},
+				{
+					"Errors": [],
+					"name": "",
+					"siblingId": "_q61o3ohg4",
+					"dataType": 1,
+					"notes": "",
+					"id": "_efh7bqbm3",
+					"parentId": "_dgzu2xspr",
+					"attributeType": 0
+				}
+			],
+			"feedbacks": [
+				{
+					"Errors": [],
+					"name": "zone toggle",
+					"siblingId": "_6o2ln73q7",
+					"dataType": 1,
+					"notes": "",
+					"id": "_wvew5dew4",
+					"parentId": "_dgzu2xspr",
+					"attributeType": 1
+				},
+				{
+					"Errors": [],
+					"name": "off zone",
+					"siblingId": "_efh7bqbm3",
+					"dataType": 1,
+					"notes": "",
+					"id": "_q61o3ohg4",
+					"parentId": "_dgzu2xspr",
+					"attributeType": 1
+				}
+			],
+			"specifications": [
+				{
+					"Errors": [],
+					"parentId": "_og2t5u5rc",
+					"id": "_v6b8bsth4",
+					"componentId": "_vibys9wzo",
+					"instanceName": "Lighting channel",
+					"numberOfInstances": 10
+				}
+			]
+		}
+	],
+	"allComponentsForAllContracts": []
+}
