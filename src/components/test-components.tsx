@@ -1,8 +1,8 @@
-import { Button } from "antd";
 import { FunctionComponent } from "react";
-import useSendDigital from "../hooks/use-send-digital";
 import useSendAnalog from "../hooks/use-send-analog";
+import useSendDigital from "../hooks/use-send-digital";
 import useSendSerial from "../hooks/use-send-serial";
+import ChButton from "./hoc/ch-button";
 
 interface TestComponentProps {}
 
@@ -14,13 +14,14 @@ const TestComponent: FunctionComponent<TestComponentProps> = () => {
   return (
     <div id="controlGroupWrapper">
       <div className="controlGroup">
-        <Button
+        <ChButton
           id="sendDigitalButton"
           className="btn"
-          onClick={() => sendDigital(!digitalState)}
-        >
-          Toggle Digital
-        </Button>
+          onPress={() => sendDigital(true)}
+          onRelease={() => sendDigital(false)}
+          text="Toggle Digital"
+        />
+
         <p id="currentDigitalValue">{digitalState.toString()}</p>
       </div>
       <div className="controlGroup">

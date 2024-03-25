@@ -10,11 +10,7 @@ body {
   margin: 0;
 }
 
-
 .gradient {
   background: #6a11cb;
-  background: linear-gradient(
-    to right,
-    #6a11cb,#2575fc
-  );
+  background: linear-gradient(45deg, rgba(107, 16, 203, 0.5), #3b43d3);
 }

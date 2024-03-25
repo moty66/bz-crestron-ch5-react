@@ -49,8 +49,10 @@ function App() {
         transform: "scale(1.5)",
       },
     }),
+    className: "gradient",
     style: {
       height: "76px",
+      marginBottom: "8px",
     },
     // label: `nav ${index + 1}`,
     onClick: () => setActiveNav(el.value),
@@ -71,8 +73,16 @@ function App() {
         onCollapse={(collapsed, type) => {
           console.log(collapsed, type);
         }}
-        width={80}
-        style={{ width: "100%", display: "flex", alignItems: "center" }}
+        width={"auto"}
+        style={{
+          // width: "auto !important",
+          // maxWidth: "auto !important",
+          // minWidth: "auto !important",
+          // flex: "0 1 auto !important",
+          display: "flex",
+          alignItems: "center",
+          backgroundColor: "red",
+        }}
       >
         <Menu
           mode="inline"
@@ -83,6 +93,7 @@ function App() {
             background: colorBgContainer,
             height: "100%",
             width: "100%",
+            padding: "0 5px 0 14px",
           }}
           defaultSelectedKeys={["1"]}
           items={items}
@@ -100,7 +111,7 @@ function App() {
             qui
           </div>
         </div>
-        <Content style={{ margin: "24px 16px 0", width: "100%" }}>
+        <Content style={{ margin: "16px 16px 0", width: "100%" }}>
           <div
             style={{
               padding: 24,
