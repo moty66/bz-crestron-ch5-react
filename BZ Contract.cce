@@ -24,8 +24,59 @@
 		{
 			"Errors": [],
 			"parentId": "_og2t5u5rc",
+			"id": "_zde8nzsp1",
+			"name": "Curtains",
+			"commands": [
+				{
+					"Errors": [],
+					"name": "",
+					"siblingId": "_czs7x9yij",
+					"dataType": 1,
+					"notes": "",
+					"id": "_7htgfdgf4",
+					"parentId": "_zde8nzsp1",
+					"attributeType": 0
+				},
+				{
+					"Errors": [],
+					"name": "",
+					"siblingId": "_6ipot1mcm",
+					"dataType": 1,
+					"notes": "",
+					"id": "_wzbln8kcg",
+					"parentId": "_zde8nzsp1",
+					"attributeType": 0
+				}
+			],
+			"feedbacks": [
+				{
+					"Errors": [],
+					"name": "up",
+					"siblingId": "_7htgfdgf4",
+					"dataType": 1,
+					"notes": "",
+					"id": "_czs7x9yij",
+					"parentId": "_zde8nzsp1",
+					"attributeType": 1
+				},
+				{
+					"Errors": [],
+					"name": "down",
+					"siblingId": "_wzbln8kcg",
+					"dataType": 1,
+					"notes": "",
+					"id": "_6ipot1mcm",
+					"parentId": "_zde8nzsp1",
+					"attributeType": 1
+				}
+			],
+			"specifications": []
+		},
+		{
+			"Errors": [],
+			"parentId": "_og2t5u5rc",
 			"id": "_vibys9wzo",
-			"name": "Lighting channel",
+			"name": "Lighting",
 			"commands": [
 				{
 					"Errors": [],
@@ -276,7 +327,7 @@
 			"Errors": [],
 			"parentId": "_og2t5u5rc",
 			"id": "_dgzu2xspr",
-			"name": "Lighting zone",
+			"name": "Zone",
 			"commands": [
 				{
 					"Errors": [],
@@ -329,6 +380,14 @@
 					"componentId": "_vibys9wzo",
 					"instanceName": "Lighting channel",
 					"numberOfInstances": 10
+				},
+				{
+					"Errors": [],
+					"parentId": "_og2t5u5rc",
+					"id": "_d8llng2ae",
+					"componentId": "_zde8nzsp1",
+					"instanceName": "Curtains",
+					"numberOfInstances": 5
 				}
 			]
 		}
