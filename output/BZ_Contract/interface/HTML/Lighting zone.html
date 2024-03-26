@@ -1,12 +1,12 @@
-<template id="BZ_Contract.Lighting_zone.Lighting_zone">
-	<ch5-list id="Lighting_zone.Lighting_zone" indexId="idx1" size="40" orientation="horizontal">
+<template id="BZ_Contract.Zone.Lighting_zone">
+	<ch5-list id="Zone.Lighting_zone" indexId="idx1" size="40" orientation="horizontal">
  	 	 <template>
  	 	 <div class="horizontal-list-item">
 	 		<ch5-button sendEventOnClick="Lighting_zone[{{idx1}}].zone_toggle" receiveStateSelected="Lighting_zone[{{idx1}}].zone_is_on">
         	</ch5-button>
 	 		<ch5-button sendEventOnClick="Lighting_zone[{{idx1}}].off_zone">
         	</ch5-button>
-	 	<ch5-list id="Lighting_zone.Lighting_channel.Lighting_channel" indexId="idx2" size="10" orientation="horizontal">
+	 	<ch5-list id="Zone.Lighting.Lighting_channel" indexId="idx2" size="10" orientation="horizontal">
  	 	 <template>
  	 	 <div class="horizontal-list-item">
 	 		<ch5-button receiveStateSelected="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].is_dimmer" disabled>
@@ -24,13 +24,24 @@
         	</ch5-button>
 	 		<ch5-button receiveStateSelected="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].ris2" disabled>
         	</ch5-button>
-	 		<ch5-slider receiveStateValue="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].ris3" nohandle>
+	 		<ch5-slider receiveStateValue="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].floor_number" nohandle>
         	</ch5-slider>
 	 		<ch5-slider receiveStateValue="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].ris4" nohandle>
         	</ch5-slider>
 	 		<ch5-button receiveStateSelected="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].ris5" disabled>
         	</ch5-button>
 	 		<ch5-button receiveStateSelected="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].ris6" disabled>
+        	</ch5-button>
+	 	 </div> 
+ 	 	</template>
+ 	</ch5-list>
+
+	 	<ch5-list id="Zone.Curtains.Curtains" indexId="idx2" size="5" orientation="horizontal">
+ 	 	 <template>
+ 	 	 <div class="horizontal-list-item">
+	 		<ch5-button sendEventOnClick="Lighting_zone[{{idx1}}].Curtains[{{idx2}}].up">
+        	</ch5-button>
+	 		<ch5-button sendEventOnClick="Lighting_zone[{{idx1}}].Curtains[{{idx2}}].down">
         	</ch5-button>
 	 	 </div> 
  	 	</template>
