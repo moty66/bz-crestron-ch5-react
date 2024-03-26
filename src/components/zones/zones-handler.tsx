@@ -8,13 +8,15 @@ import {
   RadioChangeEvent,
   Row,
   Space,
+  Tabs,
   theme,
 } from "antd";
 import Sider from "antd/es/layout/Sider";
 import { Content } from "antd/es/layout/layout";
 import { FunctionComponent, useEffect, useState } from "react";
-import { IFloor, IFloorZone } from "../luci/luci-config";
 import LuciComponent from "../luci/luci";
+import { IFloor, IFloorZone } from "../luci/luci-config";
+import TendaComponent from "../tende/tenda";
 
 interface ZonesHandlerProps {
   activeFloor: IFloor;
@@ -72,7 +74,7 @@ const ZonesHandler: FunctionComponent<ZonesHandlerProps> = ({
       </Sider>
       <Layout style={{ backgroundColor: colorBgContainer }}>
         <Content style={{ margin: "0 16px" }}>
-          <Row style={{ margin: "16px" }}>
+          <Row style={{ marginLeft: "16px" }}>
             <Col span={20}>
               <Breadcrumb style={{ fontSize: "1.5rem" }}>
                 <Breadcrumb.Item>{activeFloor.floor}</Breadcrumb.Item>
@@ -115,16 +117,41 @@ const ZonesHandler: FunctionComponent<ZonesHandlerProps> = ({
               padding: 16,
               minHeight: 360,
               background: colorBgContainer,
-              // background: colorBgContainer,
             }}
           >
-            <Row>
-              {activeZone?.components.map((component, index) => (
-                <Col key={index} span={2}>
-                  <LuciComponent />
-                </Col>
-              ))}
-            </Row>
+            <Tabs
+              type="card"
+              size="large"
+              defaultActiveKey="1"
+              items={[
+                {
+                  key: "1",
+                  label: "Luci",
+                  children: (
+                    <Row>
+                      {activeZone?.components.map((component, index) => (
+                        <Col key={index} span={2}>
+                          <LuciComponent item={component} />
+                        </Col>
+                      ))}
+                    </Row>
+                  ),
+                },
+                {
+                  key: "2",
+                  label: "Tende",
+                  children: (
+                    <Row>
+                      {activeZone?.tende?.map((component, index) => (
+                        <Col key={index} span={8}>
+                          <TendaComponent item={component} />
+                        </Col>
+                      ))}
+                    </Row>
+                  ),
+                },
+              ]}
+            />
           </div>
         </Content>
       </Layout>

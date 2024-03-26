@@ -14,3 +14,15 @@ body {
   background: #6a11cb;
   background: linear-gradient(45deg, rgba(107, 16, 203, 0.5), #3b43d3);
 }
+
+.ant-tabs-nav-wrap,
+.ant-tabs-nav-list {
+  width: 100%;
+}
+
+.ant-tabs-tab {
+  flex: 0 0 50%;
+  display: flex;
+  justify-content: center;
+  font-size: 1.2rem !important;
+}

@@ -7,6 +7,12 @@ export interface IFloorZone {
   zone: string;
   index: number;
   components: IZoneComponent[];
+  tende?: ITendaComponent[];
+}
+
+export interface ITendaComponent {
+  name: string;
+  index: number;
 }
 export interface IZoneComponent {
   name: string;
@@ -20,6 +26,16 @@ export const luciConfig: IFloor[] = [
       {
         zone: "Camera Padronale",
         index: 0,
+        tende: [
+          {
+            name: "Tenda 1",
+            index: 0,
+          },
+          {
+            name: "Tenda 2",
+            index: 1,
+          },
+        ],
         components: [
           {
             name: "Specchio",

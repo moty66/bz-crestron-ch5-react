@@ -2,12 +2,14 @@ import { Button, Slider } from "antd";
 import { FunctionComponent } from "react";
 import useSendAnalog from "../../hooks/use-send-analog";
 import useSendDigital from "../../hooks/use-send-digital";
+import { IZoneComponent } from "./luci-config";
 
 interface LuciComponentProps {
   onToggle?: () => void;
+  item: IZoneComponent;
 }
 
-const LuciComponent: FunctionComponent<LuciComponentProps> = () => {
+const LuciComponent: FunctionComponent<LuciComponentProps> = ({ item }) => {
   const [digitalState, sendPulse] = useSendDigital(1);
   const [analogState, sendAnalog] = useSendAnalog(1);
 
@@ -24,10 +26,21 @@ const LuciComponent: FunctionComponent<LuciComponentProps> = () => {
           textAlign: "center",
         }}
       >
-        <p style={{ fontSize: "1.2rem", height: 48, overflow: "hidden" }}>
-          {"Faretto corridoio esterno asdas dasdas dasd asdasdasd asd a"}
+        <p
+          style={{
+            fontSize: "1.2rem",
+            height: 56,
+            overflow: "hidden",
+            marginBottom: 8,
+            marginTop: 8,
+          }}
+        >
+          {item.name}
         </p>
-        <p style={{ fontSize: "1.1rem" }} id="currentAnalogValue">
+        <p
+          style={{ fontSize: "1.1rem", marginBottom: 8, marginTop: 8 }}
+          id="currentAnalogValue"
+        >
           {analogState}
         </p>
         <Slider
@@ -41,7 +54,13 @@ const LuciComponent: FunctionComponent<LuciComponentProps> = () => {
         />
         <Button
           onClick={() => sendPulse(!digitalState)}
-          style={{ height: "67px", width: 67 }}
+          style={{
+            height: "48px",
+            width: 48,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
         >
           {digitalState.toString() === "true" ? "ON" : "OFF"}
         </Button>
