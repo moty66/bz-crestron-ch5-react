@@ -6,7 +6,9 @@ import {
 import { Layout, Menu, theme } from "antd";
 import React, { useMemo, useState } from "react";
 import "./assets/App.css";
-import TestComponent from "./components/test-components";
+import { IFloor } from "./components/luci/luci-config";
+import Topbar from "./components/topbar/topbar";
+import ZonesHandler from "./components/zones/zones-handler";
 import useWebXPanel from "./hooks/useWebXPanel";
 
 const { Content, Sider } = Layout;
@@ -19,6 +21,7 @@ if (import.meta.env.VITE_APP_ENV === "development") {
 
 function App() {
   const [activeNav, setActiveNav] = useState("nav1");
+  const [activeFloor, setActiveFloor] = useState<IFloor>();
   // const [digitalState, setDigitalState] = useState(false);
   // const [analogState, setAnalogState] = useState(0);
   // const [serialState, setSerialState] = useState("");
@@ -46,13 +49,15 @@ function App() {
     icon: React.createElement(el.icon, {
       style: {
         fontSize: "1.5rem",
-        transform: "scale(1.5)",
+        transform: "scale(2.5)",
       },
     }),
     className: "gradient",
     style: {
-      height: "76px",
-      marginBottom: "8px",
+      height: "67px",
+      marginBottom: "4px",
+      display: "flex",
+      alignItems: "center",
     },
     // label: `nav ${index + 1}`,
     onClick: () => setActiveNav(el.value),
@@ -63,27 +68,18 @@ function App() {
   } = theme.useToken();
 
   return (
-    <Layout style={{ height: "100vh" }}>
+    <Layout style={{ minHeight: "100vh" }}>
       <Sider
-        // breakpoint="none"
-        collapsedWidth="0"
         onBreakpoint={(broken) => {
           console.log(broken);
         }}
         onCollapse={(collapsed, type) => {
           console.log(collapsed, type);
         }}
-        width={"auto"}
-        style={{
-          // width: "auto !important",
-          // maxWidth: "auto !important",
-          // minWidth: "auto !important",
-          // flex: "0 1 auto !important",
-          display: "flex",
-          alignItems: "center",
-          backgroundColor: "red",
-        }}
+        collapsible
+        collapsed={true}
       >
+        <div className="demo-logo-vertical" />
         <Menu
           mode="inline"
           style={{
@@ -93,35 +89,28 @@ function App() {
             background: colorBgContainer,
             height: "100%",
             width: "100%",
-            padding: "0 5px 0 14px",
+            paddingLeft: "2px",
+            paddingRight: "2px",
           }}
           defaultSelectedKeys={["1"]}
           items={items}
         />
       </Sider>
       <Layout>
-        <div style={{ margin: "16px 16px 0" }}>
+        <Topbar onFloorChange={setActiveFloor} activeFloor={activeFloor} />
+        <Content style={{ margin: "16px 16px" }}>
           <div
             style={{
-              minHeight: 80,
-              background: colorBgContainer,
-              borderRadius: borderRadiusLG,
-            }}
-          >
-            qui
-          </div>
-        </div>
-        <Content style={{ margin: "16px 16px 0", width: "100%" }}>
-          <div
-            style={{
-              padding: 24,
+              padding: 16,
               minHeight: 360,
               height: "100%",
               background: colorBgContainer,
               borderRadius: borderRadiusLG,
             }}
           >
-            {activeNav === "nav1" && <TestComponent />}
+            {activeNav === "nav1" && activeFloor && (
+              <ZonesHandler activeFloor={activeFloor} />
+            )}
           </div>
         </Content>
       </Layout>

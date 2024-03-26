@@ -1,49 +1,50 @@
-import { Button } from "antd";
+import { Button, Slider } from "antd";
 import { FunctionComponent } from "react";
-import useSendDigital from "../../hooks/use-send-digital";
 import useSendAnalog from "../../hooks/use-send-analog";
-import useSendSerial from "../../hooks/use-send-serial";
+import useSendDigital from "../../hooks/use-send-digital";
 
-interface LuciComponentProps {}
+interface LuciComponentProps {
+  onToggle?: () => void;
+}
 
 const LuciComponent: FunctionComponent<LuciComponentProps> = () => {
-  const [digitalState, sendDigital] = useSendDigital(1);
+  const [digitalState, sendPulse] = useSendDigital(1);
   const [analogState, sendAnalog] = useSendAnalog(1);
-  const [serialState, sendSerial] = useSendSerial(1);
 
   return (
     <div id="controlGroupWrapper">
-      <div className="controlGroup">
-        <Button
-          id="sendDigitalButton"
-          className="btn"
-          onClick={() => sendDigital(!digitalState)}
-        >
-          Toggle Digital
-        </Button>
-        <p id="currentDigitalValue">{digitalState.toString()}</p>
-      </div>
-      <div className="controlGroup">
-        <p id="currentAnalogValue">{analogState}</p>
-        <input
-          type="range"
-          min="0"
-          max="65535"
+      <div
+        className="controlGroup"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 16,
+          textAlign: "center",
+        }}
+      >
+        <p style={{ fontSize: "1.2rem", height: 48, overflow: "hidden" }}>
+          {"Faretto corridoio esterno asdas dasdas dasd asdasdasd asd a"}
+        </p>
+        <p style={{ fontSize: "1.1rem" }} id="currentAnalogValue">
+          {analogState}
+        </p>
+        <Slider
           value={analogState}
-          placeholder="32767"
-          id="analogSlider"
-          onChange={(e) => sendAnalog(Number(e.target.value))}
+          style={{ height: 320 }}
+          min={0}
+          max={65535}
+          vertical
+          defaultValue={analogState}
+          onChange={(e) => sendAnalog(Number(e))}
         />
-      </div>
-      <div className="controlGroup">
-        <input
-          type="text"
-          name="Data"
-          id="currentSerialValue"
-          placeholder="Placeholder"
-          value={serialState}
-          onChange={(e) => sendSerial(e.target.value)}
-        />
+        <Button
+          onClick={() => sendPulse(!digitalState)}
+          style={{ height: "67px", width: 67 }}
+        >
+          {digitalState.toString() === "true" ? "ON" : "OFF"}
+        </Button>
       </div>
     </div>
   );
