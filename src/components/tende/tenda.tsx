@@ -12,7 +12,7 @@ const TendaComponent: FunctionComponent<TendaComponentProps> = ({ item }) => {
   // const [digitalState, sendPulse] = useSendDigital(1);
   // const [analogState, sendAnalog] = useSendAnalog(1);
   const {
-    token: { colorBgLayout },
+    token: { colorBgLayout, colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
   return (
@@ -26,23 +26,33 @@ const TendaComponent: FunctionComponent<TendaComponentProps> = ({ item }) => {
           alignItems: "center",
           gap: 16,
           textAlign: "center",
+          backgroundColor: colorBgLayout,
+          borderRadius: borderRadiusLG,
+          paddingTop: 16,
+          paddingBottom: 16,
         }}
       >
         <p
           style={{
             fontSize: "1.2rem",
-            height: 56,
             overflow: "hidden",
-            marginBottom: 8,
+            marginBottom: 0,
             marginTop: 8,
           }}
         >
           {item.name}
         </p>
-        <Flex gap={"small"}>
+        <Flex
+          gap={"small"}
+          justify="between"
+          style={{
+            width: "100%",
+            justifyContent: "space-around",
+          }}
+        >
           <div
             style={{
-              backgroundColor: colorBgLayout,
+              backgroundColor: colorBgContainer,
               width: 100,
               height: 100,
               borderRadius: "100%",
@@ -56,7 +66,7 @@ const TendaComponent: FunctionComponent<TendaComponentProps> = ({ item }) => {
           </div>
           <div
             style={{
-              backgroundColor: colorBgLayout,
+              backgroundColor: colorBgContainer,
               width: 100,
               height: 100,
               borderRadius: "100%",

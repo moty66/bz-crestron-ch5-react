@@ -54,19 +54,27 @@ const ZonesHandler: FunctionComponent<ZonesHandlerProps> = ({
         collapsed={false}
         style={{ backgroundColor: colorBgContainer }}
       >
-        <Radio.Group onChange={handleZoneChange} value={activeZone?.zone}>
-          <Space direction="vertical">
+        <Radio.Group
+          style={{ width: "100%" }}
+          onChange={handleZoneChange}
+          value={activeZone?.zone}
+        >
+          <Space style={{ width: "100%" }} direction="vertical">
             {activeFloor.zones.map((zone, index) => (
               <Radio.Button
                 style={{
                   height: "48px",
                   display: "flex",
                   alignItems: "center",
+                  justifyContent: "space-between",
                 }}
                 key={index}
                 value={zone.zone}
               >
-                {zone.zone}
+                <Flex gap="large">
+                  {zone.zone}
+                  {zone.activeIcon ? zone.activeIcon : null}
+                </Flex>
               </Radio.Button>
             ))}
           </Space>
@@ -129,7 +137,7 @@ const ZonesHandler: FunctionComponent<ZonesHandlerProps> = ({
                   label: "Luci",
                   children: (
                     <Row>
-                      {activeZone?.components.map((component, index) => (
+                      {activeZone?.luci.map((component, index) => (
                         <Col key={index} span={2}>
                           <LuciComponent item={component} />
                         </Col>
@@ -141,7 +149,7 @@ const ZonesHandler: FunctionComponent<ZonesHandlerProps> = ({
                   key: "2",
                   label: "Tende",
                   children: (
-                    <Row>
+                    <Row style={{ gap: 8 }}>
                       {activeZone?.tende?.map((component, index) => (
                         <Col key={index} span={8}>
                           <TendaComponent item={component} />

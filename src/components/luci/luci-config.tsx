@@ -1,3 +1,4 @@
+import { PoweroffOutlined } from "@ant-design/icons";
 export interface IFloor {
   floor: string;
   zones: IFloorZone[];
@@ -6,8 +7,10 @@ export interface IFloor {
 export interface IFloorZone {
   zone: string;
   index: number;
-  components: IZoneComponent[];
+  luci: IZoneComponent[];
   tende?: ITendaComponent[];
+  activeIcon?: JSX.Element;
+  offIcon?: JSX.Element;
 }
 
 export interface ITendaComponent {
@@ -25,6 +28,8 @@ export const luciConfig: IFloor[] = [
     zones: [
       {
         zone: "Camera Padronale",
+        activeIcon: <PoweroffOutlined />,
+        offIcon: <PoweroffOutlined />,
         index: 0,
         tende: [
           {
@@ -36,7 +41,7 @@ export const luciConfig: IFloor[] = [
             index: 1,
           },
         ],
-        components: [
+        luci: [
           {
             name: "Specchio",
             index: 0,
@@ -50,7 +55,7 @@ export const luciConfig: IFloor[] = [
       {
         zone: "Soggiorno",
         index: 0,
-        components: [
+        luci: [
           {
             name: "Specchio soggiorno",
             index: 0,
@@ -100,7 +105,7 @@ export const luciConfig: IFloor[] = [
       {
         zone: "Bagno",
         index: 0,
-        components: [
+        luci: [
           {
             name: "Specchio bagno",
             index: 0,
@@ -114,7 +119,7 @@ export const luciConfig: IFloor[] = [
       {
         zone: "Bagno",
         index: 0,
-        components: [
+        luci: [
           {
             name: "Specchio bagno",
             index: 0,
@@ -128,7 +133,7 @@ export const luciConfig: IFloor[] = [
       {
         zone: "Bagno",
         index: 0,
-        components: [
+        luci: [
           {
             name: "Specchio bagno",
             index: 0,
@@ -142,7 +147,7 @@ export const luciConfig: IFloor[] = [
       {
         zone: "Bagno",
         index: 0,
-        components: [
+        luci: [
           {
             name: "Specchio bagno",
             index: 0,
@@ -156,7 +161,7 @@ export const luciConfig: IFloor[] = [
       {
         zone: "Bagno",
         index: 0,
-        components: [
+        luci: [
           {
             name: "Specchio bagno",
             index: 0,
@@ -170,7 +175,7 @@ export const luciConfig: IFloor[] = [
       {
         zone: "Bagno",
         index: 0,
-        components: [
+        luci: [
           {
             name: "Specchio bagno",
             index: 0,
@@ -184,7 +189,7 @@ export const luciConfig: IFloor[] = [
       {
         zone: "Bagno",
         index: 0,
-        components: [
+        luci: [
           {
             name: "Specchio bagno",
             index: 0,
@@ -198,7 +203,7 @@ export const luciConfig: IFloor[] = [
       {
         zone: "Bagno",
         index: 0,
-        components: [
+        luci: [
           {
             name: "Specchio bagno",
             index: 0,
@@ -217,7 +222,7 @@ export const luciConfig: IFloor[] = [
       {
         zone: "Camera Padronale piano 1",
         index: 0,
-        components: [
+        luci: [
           {
             name: "Specchio piano 1",
             index: 0,
@@ -231,7 +236,7 @@ export const luciConfig: IFloor[] = [
       {
         zone: "Giardino",
         index: 0,
-        components: [
+        luci: [
           {
             name: "Specchio giardino",
             index: 0,
@@ -245,7 +250,7 @@ export const luciConfig: IFloor[] = [
       {
         zone: "Cucina",
         index: 0,
-        components: [
+        luci: [
           {
             name: "Specchio cucina",
             index: 0,
