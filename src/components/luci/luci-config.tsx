@@ -1,4 +1,4 @@
-import { PoweroffOutlined } from "@ant-design/icons";
+import { BulbOutlined } from "@ant-design/icons";
 export interface IFloor {
   floor: string;
   zones: IFloorZone[];
@@ -28,8 +28,8 @@ export const luciConfig: IFloor[] = [
     zones: [
       {
         zone: "Camera Padronale",
-        activeIcon: <PoweroffOutlined />,
-        offIcon: <PoweroffOutlined />,
+        activeIcon: <BulbOutlined />,
+        offIcon: undefined,
         index: 0,
         tende: [
           {
