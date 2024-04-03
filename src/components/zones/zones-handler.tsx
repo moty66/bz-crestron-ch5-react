@@ -122,7 +122,6 @@ const ZonesHandler: FunctionComponent<ZonesHandlerProps> = ({
           </Row>
           <div
             style={{
-              padding: 16,
               minHeight: 360,
               background: colorBgContainer,
             }}
