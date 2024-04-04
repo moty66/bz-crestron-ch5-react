@@ -9,29 +9,12 @@
 	 	<ch5-list id="Zone.Lighting.Lighting_channel" indexId="idx2" size="10" orientation="horizontal">
  	 	 <template>
  	 	 <div class="horizontal-list-item">
-	 		<ch5-button receiveStateSelected="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].is_dimmer" disabled>
+	 		<ch5-button receiveStateSelected="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].only_on_off" disabled>
         	</ch5-button>
-	 		<ch5-button sendEventOnClick="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].set_on" receiveStateSelected="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].is_on">
-        	</ch5-button>
-	 		<ch5-button sendEventOnClick="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].set_off" receiveStateSelected="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].is_off">
-        	</ch5-button>
-	 		<ch5-button sendEventOnClick="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].toggle">
+	 		<ch5-button sendEventOnClick="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].toggle" receiveStateSelected="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].is_on">
         	</ch5-button>
 	 		<ch5-slider sendEventOnChange="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].set_value" receiveStateValue="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].current_value">
         	</ch5-slider>
-	 	<span data-ch5-textcontent="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].name">Label</span>
-	 		<ch5-button receiveStateSelected="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].ris1" disabled>
-        	</ch5-button>
-	 		<ch5-button receiveStateSelected="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].ris2" disabled>
-        	</ch5-button>
-	 		<ch5-slider receiveStateValue="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].floor_number" nohandle>
-        	</ch5-slider>
-	 		<ch5-slider receiveStateValue="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].ris4" nohandle>
-        	</ch5-slider>
-	 		<ch5-button receiveStateSelected="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].ris5" disabled>
-        	</ch5-button>
-	 		<ch5-button receiveStateSelected="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].ris6" disabled>
-        	</ch5-button>
 	 	 </div> 
  	 	</template>
  	</ch5-list>

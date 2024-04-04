@@ -80,7 +80,7 @@
 			"commands": [
 				{
 					"Errors": [],
-					"name": "is dimmer",
+					"name": "only on off",
 					"siblingId": "_8b2qzvcn7",
 					"dataType": 1,
 					"notes": "",
@@ -91,26 +91,6 @@
 				{
 					"Errors": [],
 					"name": "is on",
-					"siblingId": "_13lqi3h3x",
-					"dataType": 1,
-					"notes": "",
-					"id": "_cmcst192i",
-					"parentId": "_vibys9wzo",
-					"attributeType": 0
-				},
-				{
-					"Errors": [],
-					"name": "is off",
-					"siblingId": "_vjd51fgaf",
-					"dataType": 1,
-					"notes": "",
-					"id": "_vf91vsnt4",
-					"parentId": "_vibys9wzo",
-					"attributeType": 0
-				},
-				{
-					"Errors": [],
-					"name": "",
 					"siblingId": "_prbj1m3n2",
 					"dataType": 1,
 					"notes": "",
@@ -127,76 +107,6 @@
 					"id": "_76xdhymfv",
 					"parentId": "_vibys9wzo",
 					"attributeType": 0
-				},
-				{
-					"Errors": [],
-					"name": "name",
-					"siblingId": "_upx3e89j5",
-					"dataType": 3,
-					"notes": "",
-					"id": "_yrb6g4qcn",
-					"parentId": "_vibys9wzo",
-					"attributeType": 0
-				},
-				{
-					"Errors": [],
-					"name": "ris1",
-					"siblingId": "_m4bt5iif2",
-					"dataType": 1,
-					"notes": "",
-					"id": "_yrwjbajeh",
-					"parentId": "_vibys9wzo",
-					"attributeType": 0
-				},
-				{
-					"Errors": [],
-					"name": "ris2",
-					"siblingId": "_b2kvn0xlx",
-					"dataType": 1,
-					"notes": "",
-					"id": "_svpbhszx3",
-					"parentId": "_vibys9wzo",
-					"attributeType": 0
-				},
-				{
-					"Errors": [],
-					"name": "floor number",
-					"siblingId": "_aw8htg8jo",
-					"dataType": 2,
-					"notes": "",
-					"id": "_dxfexe2nc",
-					"parentId": "_vibys9wzo",
-					"attributeType": 0
-				},
-				{
-					"Errors": [],
-					"name": "ris4",
-					"siblingId": "_zxp498f6j",
-					"dataType": 2,
-					"notes": "",
-					"id": "_nrym37bk8",
-					"parentId": "_vibys9wzo",
-					"attributeType": 0
-				},
-				{
-					"Errors": [],
-					"name": "ris5",
-					"siblingId": "_3fv4661cr",
-					"dataType": 1,
-					"notes": "",
-					"id": "_gdam7si88",
-					"parentId": "_vibys9wzo",
-					"attributeType": 0
-				},
-				{
-					"Errors": [],
-					"name": "ris6",
-					"siblingId": "_jfhukbs9w",
-					"dataType": 1,
-					"notes": "",
-					"id": "_wicamosa1",
-					"parentId": "_vibys9wzo",
-					"attributeType": 0
 				}
 			],
 			"feedbacks": [
@@ -207,26 +117,6 @@
 					"dataType": 1,
 					"notes": "",
 					"id": "_8b2qzvcn7",
-					"parentId": "_vibys9wzo",
-					"attributeType": 1
-				},
-				{
-					"Errors": [],
-					"name": "set on",
-					"siblingId": "_cmcst192i",
-					"dataType": 1,
-					"notes": "",
-					"id": "_13lqi3h3x",
-					"parentId": "_vibys9wzo",
-					"attributeType": 1
-				},
-				{
-					"Errors": [],
-					"name": "set off",
-					"siblingId": "_vf91vsnt4",
-					"dataType": 1,
-					"notes": "",
-					"id": "_vjd51fgaf",
 					"parentId": "_vibys9wzo",
 					"attributeType": 1
 				},
@@ -247,76 +137,6 @@
 					"dataType": 2,
 					"notes": "",
 					"id": "_3dwzbw0md",
-					"parentId": "_vibys9wzo",
-					"attributeType": 1
-				},
-				{
-					"Errors": [],
-					"name": "",
-					"siblingId": "_yrb6g4qcn",
-					"dataType": 3,
-					"notes": "",
-					"id": "_upx3e89j5",
-					"parentId": "_vibys9wzo",
-					"attributeType": 1
-				},
-				{
-					"Errors": [],
-					"name": "",
-					"siblingId": "_yrwjbajeh",
-					"dataType": 1,
-					"notes": "",
-					"id": "_m4bt5iif2",
-					"parentId": "_vibys9wzo",
-					"attributeType": 1
-				},
-				{
-					"Errors": [],
-					"name": "",
-					"siblingId": "_svpbhszx3",
-					"dataType": 1,
-					"notes": "",
-					"id": "_b2kvn0xlx",
-					"parentId": "_vibys9wzo",
-					"attributeType": 1
-				},
-				{
-					"Errors": [],
-					"name": "",
-					"siblingId": "_dxfexe2nc",
-					"dataType": 2,
-					"notes": "",
-					"id": "_aw8htg8jo",
-					"parentId": "_vibys9wzo",
-					"attributeType": 1
-				},
-				{
-					"Errors": [],
-					"name": "",
-					"siblingId": "_nrym37bk8",
-					"dataType": 2,
-					"notes": "",
-					"id": "_zxp498f6j",
-					"parentId": "_vibys9wzo",
-					"attributeType": 1
-				},
-				{
-					"Errors": [],
-					"name": "",
-					"siblingId": "_gdam7si88",
-					"dataType": 1,
-					"notes": "",
-					"id": "_3fv4661cr",
-					"parentId": "_vibys9wzo",
-					"attributeType": 1
-				},
-				{
-					"Errors": [],
-					"name": "",
-					"siblingId": "_wicamosa1",
-					"dataType": 1,
-					"notes": "",
-					"id": "_jfhukbs9w",
 					"parentId": "_vibys9wzo",
 					"attributeType": 1
 				}

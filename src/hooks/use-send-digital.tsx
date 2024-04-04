@@ -4,25 +4,28 @@ type SendDigital = (value: boolean) => void;
 type SendPulse = () => void;
 type UseSendDigital = [boolean, SendDigital, SendPulse];
 
-export default function useSendDigital(id: string | number): UseSendDigital {
+export default function useSendDigital(
+  feedback: string | number,
+  command?: string | number
+): UseSendDigital {
   const [digitalState, setDigitalState] = useState(false);
 
   useEffect(() => {
     const a1Id = window.CrComLib.subscribeState(
       "b",
-      id.toString(),
+      feedback.toString(),
       (value: boolean) => {
         setDigitalState(value);
       }
     );
 
     return () => {
-      window.CrComLib.unsubscribeState("b", id.toString(), a1Id);
+      window.CrComLib.unsubscribeState("b", feedback.toString(), a1Id);
     };
   }, []);
 
   const sendDigital: SendDigital = (value: boolean) => {
-    window.CrComLib.publishEvent("b", id.toString(), value);
+    command && window.CrComLib.publishEvent("b", command.toString(), value);
     //setDigitalState(value);
   };
 

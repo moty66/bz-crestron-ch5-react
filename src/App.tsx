@@ -1,13 +1,12 @@
 import {
-  UploadOutlined,
-  UserOutlined,
+  BellOutlined,
+  HomeOutlined,
+  SecurityScanOutlined,
   VideoCameraOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, theme } from "antd";
 import React, { useMemo, useState } from "react";
 import "./assets/App.css";
-import { IFloor } from "./components/luci/luci-config";
-import Topbar from "./components/topbar/topbar";
 import ZonesHandler from "./components/zones/zones-handler";
 import useWebXPanel from "./hooks/useWebXPanel";
 
@@ -20,15 +19,14 @@ if (import.meta.env.VITE_APP_ENV === "development") {
 }
 
 function App() {
-  const [activeNav, setActiveNav] = useState("nav1");
-  const [activeFloor, setActiveFloor] = useState<IFloor>();
+  const [activeNav, setActiveNav] = useState("home");
   // const [digitalState, setDigitalState] = useState(false);
   // const [analogState, setAnalogState] = useState(0);
   // const [serialState, setSerialState] = useState("");
 
   const webXPanelConfig = useMemo(
     () => ({
-      ipId: "0x06",
+      ipId: "0x03",
       host: "192.168.1.123",
       roomId: "",
       authToken:
@@ -40,10 +38,10 @@ function App() {
   useWebXPanel(webXPanelConfig);
 
   const items = [
-    { icon: UserOutlined, value: "nav1" },
+    { icon: HomeOutlined, value: "home" },
     { icon: VideoCameraOutlined, value: "nav2" },
-    { icon: UploadOutlined, value: "nav3" },
-    { icon: UserOutlined, value: "nav4" },
+    { icon: SecurityScanOutlined, value: "nav3" },
+    { icon: BellOutlined, value: "nav4" },
   ].map((el, index) => ({
     key: String(index + 1),
     icon: React.createElement(el.icon, {
@@ -97,7 +95,6 @@ function App() {
         />
       </Sider>
       <Layout>
-        <Topbar onFloorChange={setActiveFloor} activeFloor={activeFloor} />
         <Content style={{ margin: "16px 16px" }}>
           <div
             style={{
@@ -108,9 +105,7 @@ function App() {
               borderRadius: borderRadiusLG,
             }}
           >
-            {activeNav === "nav1" && activeFloor && (
-              <ZonesHandler activeFloor={activeFloor} />
-            )}
+            {activeNav === "home" && <ZonesHandler />}
           </div>
         </Content>
       </Layout>

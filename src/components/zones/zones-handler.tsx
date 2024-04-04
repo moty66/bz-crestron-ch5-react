@@ -1,7 +1,9 @@
+import { BulbOutlined } from "@ant-design/icons";
 import {
   Breadcrumb,
   Button,
   Col,
+  Divider,
   Flex,
   Layout,
   Radio,
@@ -11,158 +13,182 @@ import {
   Tabs,
   theme,
 } from "antd";
+
 import Sider from "antd/es/layout/Sider";
 import { Content } from "antd/es/layout/layout";
 import { FunctionComponent, useEffect, useState } from "react";
+import {
+  CRESTRON_MAX_ANALOG_SIZE,
+  sendAnalogValue,
+} from "../../helpers/crestron";
 import LuciComponent from "../luci/luci";
 import { IFloor, IFloorZone } from "../luci/luci-config";
 import TendaComponent from "../tende/tenda";
+import Topbar from "../topbar/topbar";
 
-interface ZonesHandlerProps {
-  activeFloor: IFloor;
-}
+interface ZonesHandlerProps {}
 
-const ZonesHandler: FunctionComponent<ZonesHandlerProps> = ({
-  activeFloor,
-}) => {
+const ZonesHandler: FunctionComponent<ZonesHandlerProps> = () => {
   const [activeZone, setActiveZone] = useState<IFloorZone>();
+  const [activeFloor, setActiveFloor] = useState<IFloor>();
   const {
     token: { colorBgContainer },
   } = theme.useToken();
 
-  const handleZoneOn = () => {
-    alert(`ON: ${activeFloor.floor} ${activeZone?.zone}`);
-  };
-
-  const handleZoneOff = () => {
-    alert(`OFF: ${activeFloor.floor} ${activeZone?.zone}`);
-  };
-
   const handleZoneChange = (e: RadioChangeEvent) => {
-    const zone = activeFloor.zones.find((el) => el.zone === e.target.value);
+    const zone = activeFloor?.zones.find((el) => el.zone === e.target.value);
     zone && setActiveZone(zone);
   };
 
   useEffect(() => {
-    setActiveZone(activeFloor.zones[0]);
+    setActiveZone(activeFloor?.zones[0]);
   }, [activeFloor]);
 
+  function handleZoneOn() {
+    if (!activeZone) return;
+    activeZone.luci.forEach((item) => {
+      sendAnalogValue(
+        `Lighting_zone[${item.index}].Lighting_channel[${item.channel}].set_value`,
+        CRESTRON_MAX_ANALOG_SIZE
+      );
+    });
+  }
+
+  function handleZoneOff() {
+    if (!activeZone) return;
+    activeZone.luci.forEach((item) => {
+      sendAnalogValue(
+        `Lighting_zone[${item.index}].Lighting_channel[${item.channel}].set_value`,
+        0
+      );
+    });
+  }
+
   return (
-    <Layout>
-      <Sider
-        collapsible={false}
-        collapsed={false}
-        style={{ backgroundColor: colorBgContainer }}
-      >
-        <Radio.Group
-          style={{ width: "100%" }}
-          onChange={handleZoneChange}
-          value={activeZone?.zone}
+    <>
+      <Topbar onFloorChange={setActiveFloor} activeFloor={activeFloor} />
+      <Divider></Divider>
+      <Layout>
+        <Sider
+          collapsible={false}
+          collapsed={false}
+          width={280}
+          style={{ backgroundColor: colorBgContainer, paddingRight: "32px" }}
         >
-          <Space style={{ width: "100%" }} direction="vertical">
-            {activeFloor.zones.map((zone, index) => (
-              <Radio.Button
-                style={{
-                  height: "48px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
-                key={index}
-                value={zone.zone}
-              >
-                <Flex gap="large">
-                  {zone.zone}
-                  {zone.activeIcon ? zone.activeIcon : null}
-                </Flex>
-              </Radio.Button>
-            ))}
-          </Space>
-        </Radio.Group>
-      </Sider>
-      <Layout style={{ backgroundColor: colorBgContainer }}>
-        <Content style={{ margin: "0 16px" }}>
-          <Row style={{ marginLeft: "16px" }}>
-            <Col span={20}>
-              <Breadcrumb style={{ fontSize: "1.5rem" }}>
-                <Breadcrumb.Item>{activeFloor.floor}</Breadcrumb.Item>
-                {activeZone?.zone && (
-                  <Breadcrumb.Item>{activeZone.zone}</Breadcrumb.Item>
-                )}
-              </Breadcrumb>
-            </Col>
-            <Col>
-              <Flex gap="small" wrap="wrap">
-                <Button
-                  onClick={handleZoneOn}
-                  style={{
-                    height: "48px",
-                    width: 48,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  {"ON"}
-                </Button>
-                <Button
-                  onClick={handleZoneOff}
-                  style={{
-                    height: "48px",
-                    width: 48,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  {"OFF"}
-                </Button>
-              </Flex>
-            </Col>
-          </Row>
-          <div
-            style={{
-              minHeight: 360,
-              background: colorBgContainer,
-            }}
+          <Radio.Group
+            style={{ width: "100%" }}
+            onChange={handleZoneChange}
+            value={activeZone?.zone}
           >
-            <Tabs
-              type="card"
-              size="large"
-              defaultActiveKey="1"
-              items={[
-                {
-                  key: "1",
-                  label: "Luci",
-                  children: (
-                    <Row>
-                      {activeZone?.luci.map((component, index) => (
-                        <Col key={index} span={2}>
-                          <LuciComponent item={component} />
-                        </Col>
-                      ))}
-                    </Row>
-                  ),
-                },
-                {
-                  key: "2",
-                  label: "Tende",
-                  children: (
-                    <Row style={{ gap: 8 }}>
-                      {activeZone?.tende?.map((component, index) => (
-                        <Col key={index} span={8}>
-                          <TendaComponent item={component} />
-                        </Col>
-                      ))}
-                    </Row>
-                  ),
-                },
-              ]}
-            />
-          </div>
-        </Content>
+            <Space style={{ width: "100%" }} direction="vertical">
+              {activeFloor?.zones.map((zone, index) => (
+                <Radio.Button
+                  style={{
+                    width: "100%",
+                    height: "64px",
+                    lineHeight: "64px",
+                    padding: "0 32px",
+                    fontSize: "0.8rem",
+                    textTransform: "uppercase",
+                  }}
+                  key={index}
+                  value={zone.zone}
+                >
+                  <Flex justify="space-between">
+                    <span>{zone.zone}</span>
+                    <BulbOutlined />
+                  </Flex>
+                </Radio.Button>
+              ))}
+            </Space>
+          </Radio.Group>
+        </Sider>
+        <Layout style={{ backgroundColor: colorBgContainer }}>
+          <Content style={{ margin: "0 16px" }}>
+            <Flex justify="space-between" style={{ minHeight: "92px" }}>
+              <div>
+                <Breadcrumb style={{ fontSize: "1.5rem", lineHeight: "64px" }}>
+                  <Breadcrumb.Item>{activeFloor?.floor}</Breadcrumb.Item>
+                  {activeZone?.zone && (
+                    <Breadcrumb.Item>{activeZone.zone}</Breadcrumb.Item>
+                  )}
+                </Breadcrumb>
+              </div>
+              <div>
+                <Flex style={{}}>
+                  <Button
+                    onClick={() => handleZoneOn()}
+                    style={{
+                      width: "100%",
+                      height: "64px",
+                      lineHeight: "64px",
+                      padding: "0 32px",
+                      marginRight: "8px",
+                    }}
+                  >
+                    {"TOTAL ON"}
+                  </Button>
+                  <Button
+                    onClick={() => handleZoneOff()}
+                    style={{
+                      width: "100%",
+                      height: "64px",
+                      lineHeight: "64px",
+                      padding: "0 32px",
+                    }}
+                  >
+                    {"TOTAL OFF"}
+                  </Button>
+                </Flex>
+              </div>
+            </Flex>
+
+            <div
+              style={{
+                minHeight: 360,
+                background: colorBgContainer,
+              }}
+            >
+              <Tabs
+                type="card"
+                size="large"
+                defaultActiveKey="1"
+                items={[
+                  {
+                    key: "1",
+                    label: "Luci",
+                    children: (
+                      <>
+                        <Row>
+                          {activeZone?.luci.map((component, index) => (
+                            <Col key={index} span={2}>
+                              <LuciComponent item={component} />
+                            </Col>
+                          ))}
+                        </Row>
+                      </>
+                    ),
+                  },
+                  {
+                    key: "2",
+                    label: "Tende",
+                    children: (
+                      <Row style={{ gap: 8 }}>
+                        {activeZone?.tende?.map((component, index) => (
+                          <Col key={index} span={8}>
+                            <TendaComponent item={component} />
+                          </Col>
+                        ))}
+                      </Row>
+                    ),
+                  },
+                ]}
+              />
+            </div>
+          </Content>
+        </Layout>
       </Layout>
-    </Layout>
+    </>
   );
 };
 

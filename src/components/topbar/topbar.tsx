@@ -1,5 +1,5 @@
-import { Radio, RadioChangeEvent, Space, theme } from "antd";
-import { FunctionComponent } from "react";
+import { Radio, RadioChangeEvent, theme } from "antd";
+import { FunctionComponent, useEffect } from "react";
 import { IFloor, luciConfig } from "../luci/luci-config";
 
 interface TopbarProps {
@@ -20,36 +20,35 @@ const Topbar: FunctionComponent<TopbarProps> = ({
     floor && onFloorChange(floor);
   };
 
+  useEffect(() => {
+    if (!activeFloor) {
+      onFloorChange(luciConfig[0]);
+    }
+  }, []);
+
   return (
-    <div style={{ margin: "16px 16px 0" }}>
+    <div style={{ margin: "" }}>
       <div
         style={{
-          minHeight: 80,
-          paddingLeft: 16,
-          paddingRight: 16,
           background: colorBgContainer,
           borderRadius: borderRadiusLG,
-          display: "flex",
-          alignItems: "center",
-          gap: 16,
         }}
       >
         <Radio.Group onChange={handleFloorChange} value={activeFloor?.floor}>
-          <Space direction="horizontal">
-            {luciConfig.map((floor, index) => (
-              <Radio.Button
-                style={{
-                  height: "48px",
-                  display: "flex",
-                  alignItems: "center",
-                }}
-                key={index}
-                value={floor.floor}
-              >
-                {floor.floor}
-              </Radio.Button>
-            ))}
-          </Space>
+          {luciConfig.map((floor, index) => (
+            <Radio.Button
+              style={{
+                height: "64px",
+                lineHeight: "64px",
+                padding: "0 32px",
+                fontSize: "1.5rem",
+              }}
+              key={index}
+              value={floor.floor}
+            >
+              {floor.floor}
+            </Radio.Button>
+          ))}
         </Radio.Group>
       </div>
     </div>
