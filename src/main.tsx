@@ -11,10 +11,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           Slider: {
             handleSize: 32,
             dotSize: 32,
-            railSize: 16,
+            railSize: 8,
             controlSize: 32,
             handleLineWidthHover: 8,
-            handleColorDisabled: "#1677ff",
             handleColor: "#1677ff",
           },
         },

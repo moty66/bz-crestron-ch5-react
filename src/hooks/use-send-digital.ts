@@ -22,7 +22,7 @@ export default function useSendDigital(
     return () => {
       window.CrComLib.unsubscribeState("b", feedback.toString(), a1Id);
     };
-  }, []);
+  }, [feedback]);
 
   const sendDigital: SendDigital = (value: boolean) => {
     command && window.CrComLib.publishEvent("b", command.toString(), value);

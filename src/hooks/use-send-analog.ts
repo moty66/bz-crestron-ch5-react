@@ -9,7 +9,7 @@ export default function useSendAnalog(
   command?: string | number
 ): UseSendAnalog {
   const [analogState, setAnalogState] = useState(0);
-
+  // const debouncedValue = useDebounce(analogState, 500) as number;
   useEffect(() => {
     const a1Id = window.CrComLib.subscribeState(
       "n",
@@ -20,11 +20,11 @@ export default function useSendAnalog(
     return () => {
       window.CrComLib.unsubscribeState("n", feedback.toString(), a1Id);
     };
-  }, []);
+  }, [feedback]);
 
   const sendAnalog: sendAnalog = (value) => {
     command && window.CrComLib.publishEvent("n", command.toString(), value);
-    //setAnalogState(value);
+    setAnalogState(value);
   };
 
   const toggleAnalog = () => {

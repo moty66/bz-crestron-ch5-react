@@ -1,6 +1,4 @@
-import { BulbOutlined } from "@ant-design/icons";
 import {
-  Breadcrumb,
   Button,
   Col,
   Divider,
@@ -72,8 +70,8 @@ const ZonesHandler: FunctionComponent<ZonesHandlerProps> = () => {
         <Sider
           collapsible={false}
           collapsed={false}
-          width={280}
-          style={{ backgroundColor: colorBgContainer, paddingRight: "32px" }}
+          width={236}
+          style={{ backgroundColor: colorBgContainer, paddingRight: "16px" }}
         >
           <Radio.Group
             style={{ width: "100%" }}
@@ -85,8 +83,8 @@ const ZonesHandler: FunctionComponent<ZonesHandlerProps> = () => {
                 <Radio.Button
                   style={{
                     width: "100%",
-                    height: "64px",
-                    lineHeight: "64px",
+                    height: "48px",
+                    lineHeight: "48px",
                     padding: "0 32px",
                     fontSize: "0.8rem",
                     textTransform: "uppercase",
@@ -96,48 +94,59 @@ const ZonesHandler: FunctionComponent<ZonesHandlerProps> = () => {
                 >
                   <Flex justify="space-between">
                     <span>{zone.zone}</span>
-                    <BulbOutlined />
+                    {/* <BulbOutlined /> */}
                   </Flex>
                 </Radio.Button>
               ))}
             </Space>
           </Radio.Group>
         </Sider>
-        <Layout style={{ backgroundColor: colorBgContainer }}>
+        <Layout
+          style={{
+            backgroundColor: colorBgContainer,
+          }}
+        >
           <Content style={{ margin: "0 16px" }}>
             <Flex justify="space-between" style={{ minHeight: "92px" }}>
               <div>
-                <Breadcrumb style={{ fontSize: "1.5rem", lineHeight: "64px" }}>
-                  <Breadcrumb.Item>{activeFloor?.floor}</Breadcrumb.Item>
-                  {activeZone?.zone && (
-                    <Breadcrumb.Item>{activeZone.zone}</Breadcrumb.Item>
-                  )}
-                </Breadcrumb>
-              </div>
-              <div>
                 <Flex style={{}}>
                   <Button
-                    onClick={() => handleZoneOn()}
+                    type="text"
+                    disabled
                     style={{
-                      width: "100%",
                       height: "64px",
                       lineHeight: "64px",
                       padding: "0 32px",
                       marginRight: "8px",
                     }}
                   >
-                    {"TOTAL ON"}
+                    {activeFloor?.floor} / {activeZone?.zone}
+                  </Button>
+                  <Button
+                    onClick={() => handleZoneOn()}
+                    type="primary"
+                    style={{
+                      height: "64px",
+                      lineHeight: "64px",
+                      padding: "0 32px",
+                      marginRight: "8px",
+                    }}
+                  >
+                    {"Accendi tutto"}
                   </Button>
                   <Button
                     onClick={() => handleZoneOff()}
                     style={{
-                      width: "100%",
                       height: "64px",
                       lineHeight: "64px",
                       padding: "0 32px",
                     }}
+                    danger
                   >
-                    {"TOTAL OFF"}
+                    <Flex justify="space-between">
+                      {"Spegni tutto"}
+                      {/* <BulbOutlined /> */}
+                    </Flex>
                   </Button>
                 </Flex>
               </div>
@@ -146,39 +155,41 @@ const ZonesHandler: FunctionComponent<ZonesHandlerProps> = () => {
             <div
               style={{
                 minHeight: 360,
+                // paddingRight: "16px",
                 background: colorBgContainer,
               }}
             >
               <Tabs
-                type="card"
-                size="large"
-                defaultActiveKey="1"
                 items={[
                   {
                     key: "1",
                     label: "Luci",
                     children: (
                       <>
-                        <Row>
-                          {activeZone?.luci.map((component, index) => (
-                            <Col key={index} span={2}>
-                              <LuciComponent item={component} />
-                            </Col>
-                          ))}
-                        </Row>
+                        <Flex>
+                          {activeZone?.luci
+                            ?.filter((item) => item.hide !== true)
+                            .map((component, index) => (
+                              <LuciComponent key={index} item={component} />
+                            ))}
+                        </Flex>
                       </>
                     ),
                   },
                   {
                     key: "2",
+                    disabled: !activeZone?.tende?.length,
                     label: "Tende",
                     children: (
                       <Row style={{ gap: 8 }}>
-                        {activeZone?.tende?.map((component, index) => (
-                          <Col key={index} span={8}>
-                            <TendaComponent item={component} />
-                          </Col>
-                        ))}
+                        {activeZone?.tende
+
+                          ?.filter((item) => item.hide !== true)
+                          .map((component, index) => (
+                            <Col key={index} span={8}>
+                              <TendaComponent item={component} />
+                            </Col>
+                          ))}
                       </Row>
                     ),
                   },

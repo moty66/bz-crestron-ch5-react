@@ -1,20 +1,21 @@
 import { Button, Slider } from "antd";
 import { FunctionComponent } from "react";
+import { CRESTRON_MAX_ANALOG_SIZE, percentage } from "../../helpers/crestron";
 import useSendAnalog from "../../hooks/use-send-analog";
 import useSendDigital from "../../hooks/use-send-digital";
-import { IZoneComponent } from "./luci-config";
-import { CRESTRON_MAX_ANALOG_SIZE, percentage } from "../../helpers/crestron";
+import { ILuciComponent } from "./luci-config";
 
 interface LuciComponentProps {
   onToggle?: () => void;
-  item: IZoneComponent;
+  item: ILuciComponent;
 }
 
 const LuciComponent: FunctionComponent<LuciComponentProps> = ({ item }) => {
-  // console.log({ item });
-  const [digitalState] = useSendDigital(
-    `Lighting_zone[${item.index}].Lighting_channel[${item.channel}].is_on`
+  const [digitalState, __sendDigital, sendPulse] = useSendDigital(
+    `Lighting_zone[${item.index}].Lighting_channel[${item.channel}].is_on`,
+    `Lighting_zone[${item.index}].Lighting_channel[${item.channel}].toggle`
   );
+
   //Lighting_zone[0].Lighting_channel[0].current_value
   const [analogState, sendAnalog, toggleAnalog] = useSendAnalog(
     `Lighting_zone[${item.index}].Lighting_channel[${item.channel}].current_value`,
@@ -27,6 +28,7 @@ const LuciComponent: FunctionComponent<LuciComponentProps> = ({ item }) => {
         className="controlGroup"
         style={{
           display: "flex",
+          width: "88px",
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
@@ -36,40 +38,33 @@ const LuciComponent: FunctionComponent<LuciComponentProps> = ({ item }) => {
       >
         <p
           style={{
-            fontSize: "1.1rem",
-            height: 56,
+            height: 42,
             padding: "0 16px",
-            overflow: "hidden",
-            marginBottom: 8,
-            marginTop: 8,
+            //overflow: "hidden",
           }}
         >
+          {/* {percentage(analogState)} <br /> */}
           {item.name}
         </p>
-        <h1
-          style={{ fontSize: "1.1rem", marginBottom: 8, marginTop: 8 }}
-          id="currentAnalogValue"
-        >
-          {percentage(analogState)}
-        </h1>
         <Slider
+          disabled={item.isOnOff}
           value={analogState}
-          style={{ height: 320 }}
+          style={{ height: 240 }}
           min={0}
           max={CRESTRON_MAX_ANALOG_SIZE}
-          step={CRESTRON_MAX_ANALOG_SIZE / 100}
+          step={CRESTRON_MAX_ANALOG_SIZE / 50}
           tooltip={{ formatter: (value) => percentage(value || 0) }}
           vertical
           defaultValue={analogState}
-          onChange={(e) => sendAnalog(Number(e))}
+          onChange={(e) => (item.isOnOff ? null : sendAnalog(Number(e)))}
         />
         <Button
           size="large"
           type={digitalState ? "primary" : "default"}
-          onClick={() => toggleAnalog()}
+          onClick={() => (item.isOnOff ? sendPulse() : toggleAnalog())}
           style={{
             //height: "48px",
-            width: 92,
+            width: 64,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",

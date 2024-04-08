@@ -10,6 +10,7 @@ namespace BZ_Contract
     {
         object UserObject { get; set; }
 
+        event EventHandler<UIEventArgs> set_off;
         event EventHandler<UIEventArgs> toggle;
         event EventHandler<UIEventArgs> set_value;
 
@@ -43,6 +44,7 @@ namespace BZ_Contract
         {
             internal static class Booleans
             {
+                public const uint set_off = 1;
                 public const uint toggle = 2;
 
                 public const uint only_on_off = 1;
@@ -72,6 +74,7 @@ namespace BZ_Contract
  
             _devices = new List<BasicTriListWithSmartObject>(); 
  
+            ComponentMediator.ConfigureBooleanEvent(controlJoinId, Joins.Booleans.set_off, onset_off);
             ComponentMediator.ConfigureBooleanEvent(controlJoinId, Joins.Booleans.toggle, ontoggle);
             ComponentMediator.ConfigureNumericEvent(controlJoinId, Joins.Numerics.set_value, onset_value);
 
@@ -92,6 +95,14 @@ namespace BZ_Contract
         #endregion
 
         #region CH5 Contract
+
+        public event EventHandler<UIEventArgs> set_off;
+        private void onset_off(SmartObjectEventArgs eventArgs)
+        {
+            EventHandler<UIEventArgs> handler = set_off;
+            if (handler != null)
+                handler(this, UIEventArgs.CreateEventArgs(eventArgs));
+        }
 
         public event EventHandler<UIEventArgs> toggle;
         private void ontoggle(SmartObjectEventArgs eventArgs)
@@ -162,6 +173,7 @@ namespace BZ_Contract
 
             IsDisposed = true;
 
+            set_off = null;
             toggle = null;
             set_value = null;
         }

@@ -31,9 +31,7 @@ namespace BZ_Contract
 
         private static readonly IDictionary<int, uint> Lighting_zoneSmartObjectIdMappings = new Dictionary<int, uint>{
             { 0, 1 }, { 1, 17 }, { 2, 33 }, { 3, 49 }, { 4, 65 }, { 5, 81 }, { 6, 97 }, { 7, 113 }, { 8, 129 }, { 9, 145 }, { 10, 161 }, { 11, 177 }, 
-            { 12, 193 }, { 13, 209 }, { 14, 225 }, { 15, 241 }, { 16, 257 }, { 17, 273 }, { 18, 289 }, { 19, 305 }, { 20, 321 }, { 21, 337 }, { 22, 353 }, 
-            { 23, 369 }, { 24, 385 }, { 25, 401 }, { 26, 417 }, { 27, 433 }, { 28, 449 }, { 29, 465 }, { 30, 481 }, { 31, 497 }, { 32, 513 }, { 33, 529 }, 
-            { 34, 545 }, { 35, 561 }, { 36, 577 }, { 37, 593 }, { 38, 609 }, { 39, 625 }};
+            { 12, 193 }, { 13, 209 }, { 14, 225 }, { 15, 241 }, { 16, 257 }, { 17, 273 }, { 18, 289 }, { 19, 305 }, { 20, 321 }, { 21, 337 }};
 
         public Contract()
             : this(new List<BasicTriListWithSmartObject>().ToArray())
@@ -78,7 +76,7 @@ namespace BZ_Contract
 
         public void AddDevice(BasicTriListWithSmartObject device)
         {
-            for (int index = 0; index < 40; index++)
+            for (int index = 0; index < 22; index++)
             {
                 InternalLighting_zone[index].AddDevice(device);
             }
@@ -86,7 +84,7 @@ namespace BZ_Contract
 
         public void RemoveDevice(BasicTriListWithSmartObject device)
         {
-            for (int index = 0; index < 40; index++)
+            for (int index = 0; index < 22; index++)
             {
                 InternalLighting_zone[index].RemoveDevice(device);
             }
@@ -105,7 +103,7 @@ namespace BZ_Contract
 
             IsDisposed = true;
 
-            for (int index = 0; index < 40; index++)
+            for (int index = 0; index < 22; index++)
             {
                 InternalLighting_zone[index].Dispose();
             }

@@ -24,7 +24,7 @@ const Topbar: FunctionComponent<TopbarProps> = ({
     if (!activeFloor) {
       onFloorChange(luciConfig[0]);
     }
-  }, []);
+  }, [activeFloor, onFloorChange]);
 
   return (
     <div style={{ margin: "" }}>

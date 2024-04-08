@@ -1,6 +1,7 @@
 import { CaretDownOutlined, CaretUpOutlined } from "@ant-design/icons";
 import { Flex, theme } from "antd";
 import { FunctionComponent } from "react";
+import { sendDigitalPulse } from "../../helpers/crestron";
 import { ITendaComponent } from "../luci/luci-config";
 
 interface TendaComponentProps {
@@ -9,11 +10,23 @@ interface TendaComponentProps {
 }
 
 const TendaComponent: FunctionComponent<TendaComponentProps> = ({ item }) => {
-  // const [digitalState, sendPulse] = useSendDigital(1);
-  // const [analogState, sendAnalog] = useSendAnalog(1);
   const {
-    token: { colorBgLayout, colorBgContainer, borderRadiusLG },
+    token: { colorBgContainer, borderRadiusLG, colorBgLayout },
   } = theme.useToken();
+
+  function up() {
+    sendDigitalPulse(
+      `Lighting_zone[${item.index}].Curtains[${item.channel}].up`,
+      100
+    );
+  }
+
+  function down() {
+    sendDigitalPulse(
+      `Lighting_zone[${item.index}].Curtains[${item.channel}].down`,
+      100
+    );
+  }
 
   return (
     <div id="controlGroupWrapper">
@@ -35,7 +48,7 @@ const TendaComponent: FunctionComponent<TendaComponentProps> = ({ item }) => {
         <p
           style={{
             fontSize: "1.2rem",
-            overflow: "hidden",
+            //overflow: "hidden",
             marginBottom: 0,
             marginTop: 8,
           }}
@@ -51,20 +64,9 @@ const TendaComponent: FunctionComponent<TendaComponentProps> = ({ item }) => {
           }}
         >
           <div
-            style={{
-              backgroundColor: colorBgContainer,
-              width: 100,
-              height: 100,
-              borderRadius: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
+            onMouseUp={() => {
+              down();
             }}
-          >
-            <CaretUpOutlined style={{ fontSize: "3rem" }} />
-          </div>
-          <div
             style={{
               backgroundColor: colorBgContainer,
               width: 100,
@@ -77,6 +79,24 @@ const TendaComponent: FunctionComponent<TendaComponentProps> = ({ item }) => {
             }}
           >
             <CaretDownOutlined style={{ fontSize: "3rem" }} />
+          </div>
+
+          <div
+            onMouseUp={() => {
+              up();
+            }}
+            style={{
+              backgroundColor: colorBgContainer,
+              width: 100,
+              height: 100,
+              borderRadius: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+            }}
+          >
+            <CaretUpOutlined style={{ fontSize: "3rem" }} />
           </div>
         </Flex>
       </div>

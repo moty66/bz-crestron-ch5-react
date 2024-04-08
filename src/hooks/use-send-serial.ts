@@ -15,7 +15,7 @@ export default function useSendSerial(id: string | number): UseSendSerial {
     return () => {
       window.CrComLib.unsubscribeState("s", id.toString(), a1Id);
     };
-  }, []);
+  }, [id]);
 
   const sendSerial: SendSerial = (value: string) => {
     window.CrComLib.publishEvent("s", id.toString(), value);

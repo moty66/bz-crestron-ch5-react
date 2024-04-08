@@ -7,3 +7,12 @@ export function percentage(value: number, decimals: number = 0) {
 export function sendAnalogValue(id: string, value: number) {
   window.CrComLib.publishEvent("n", id, value);
 }
+
+export function sendDigitalValue(id: string, value: boolean) {
+  window.CrComLib.publishEvent("b", id, value);
+}
+
+export function sendDigitalPulse(id: string, pulseLength: number = 100) {
+  sendDigitalValue(id, true);
+  setTimeout(() => sendDigitalValue(id, false), pulseLength);
+}

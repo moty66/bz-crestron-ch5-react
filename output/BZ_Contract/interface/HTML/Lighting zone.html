@@ -1,5 +1,5 @@
 <template id="BZ_Contract.Zone.Lighting_zone">
-	<ch5-list id="Zone.Lighting_zone" indexId="idx1" size="40" orientation="horizontal">
+	<ch5-list id="Zone.Lighting_zone" indexId="idx1" size="22" orientation="horizontal">
  	 	 <template>
  	 	 <div class="horizontal-list-item">
 	 		<ch5-button sendEventOnClick="Lighting_zone[{{idx1}}].zone_toggle" receiveStateSelected="Lighting_zone[{{idx1}}].zone_is_on">
@@ -9,7 +9,7 @@
 	 	<ch5-list id="Zone.Lighting.Lighting_channel" indexId="idx2" size="10" orientation="horizontal">
  	 	 <template>
  	 	 <div class="horizontal-list-item">
-	 		<ch5-button receiveStateSelected="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].only_on_off" disabled>
+	 		<ch5-button sendEventOnClick="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].set_off" receiveStateSelected="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].only_on_off">
         	</ch5-button>
 	 		<ch5-button sendEventOnClick="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].toggle" receiveStateSelected="Lighting_zone[{{idx1}}].Lighting_channel[{{idx2}}].is_on">
         	</ch5-button>

@@ -17,7 +17,7 @@
 			"id": "_rg5vooikq",
 			"componentId": "_dgzu2xspr",
 			"instanceName": "Lighting zone",
-			"numberOfInstances": 40
+			"numberOfInstances": 22
 		}
 	],
 	"components": [
@@ -112,7 +112,7 @@
 			"feedbacks": [
 				{
 					"Errors": [],
-					"name": "",
+					"name": "set off",
 					"siblingId": "_yzlhfqiir",
 					"dataType": 1,
 					"notes": "",

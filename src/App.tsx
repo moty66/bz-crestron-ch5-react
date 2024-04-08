@@ -24,16 +24,25 @@ function App() {
   // const [analogState, setAnalogState] = useState(0);
   // const [serialState, setSerialState] = useState("");
 
-  const webXPanelConfig = useMemo(
-    () => ({
-      ipId: "0x03",
-      host: "192.168.1.123",
-      roomId: "",
-      authToken:
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsIlNvdXJjZSI6IkNvbnRyb2wgU3lzdGVtIn0.eyJleHAiOjE3MTEwMzAxNDQsInVzZXJuYW1lIjoiT2ZmbGluZVRva2VuIiwiT3B0aW9uYWwiOiI1MjIyODEwMzQifQ.2IalK01LXz5bzexqVFQAuZ9VrCSzJFJNNiop-dtHOVs",
-    }),
-    []
-  ); // Dependencies array is empty, so this object is created only once
+  // DEV
+  // const config = {
+  //   ipId: "0x03",
+  //   host: "192.168.1.123",
+  //   roomId: "",
+  //   authToken:
+  //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsIlNvdXJjZSI6IkNvbnRyb2wgU3lzdGVtIn0.eyJleHAiOjE3MTEwMzAxNDQsInVzZXJuYW1lIjoiT2ZmbGluZVRva2VuIiwiT3B0aW9uYWwiOiI1MjIyODEwMzQifQ.2IalK01LXz5bzexqVFQAuZ9VrCSzJFJNNiop-dtHOVs",
+  // };
+
+  // PROD
+  const config = {
+    ipId: "0x03",
+    host: "192.168.179.5",
+    roomId: "",
+    authToken:
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsIlNvdXJjZSI6IkNvbnRyb2wgU3lzdGVtIn0.eyJleHAiOjE3MTI1NjM0NDEsInVzZXJuYW1lIjoiT2ZmbGluZVRva2VuIiwiT3B0aW9uYWwiOiIyMDI5OTY4OTk5In0.CacPpltp3EIgxPagq8Xz9SXPsi0MM_Cevimui8Tq5EY",
+  };
+
+  const webXPanelConfig = useMemo(() => config, []); // Dependencies array is empty, so this object is created only once
 
   useWebXPanel(webXPanelConfig);
 
@@ -66,17 +75,8 @@ function App() {
   } = theme.useToken();
 
   return (
-    <Layout style={{ minHeight: "100vh" }}>
-      <Sider
-        onBreakpoint={(broken) => {
-          console.log(broken);
-        }}
-        onCollapse={(collapsed, type) => {
-          console.log(collapsed, type);
-        }}
-        collapsible
-        collapsed={true}
-      >
+    <Layout>
+      <Sider collapsible={false} collapsed={true}>
         <div className="demo-logo-vertical" />
         <Menu
           mode="inline"
@@ -94,7 +94,7 @@ function App() {
           items={items}
         />
       </Sider>
-      <Layout>
+      <Layout style={{ width: "100%", minHeight: "100vh" }}>
         <Content style={{ margin: "16px 16px" }}>
           <div
             style={{
@@ -105,7 +105,11 @@ function App() {
               borderRadius: borderRadiusLG,
             }}
           >
-            {activeNav === "home" && <ZonesHandler />}
+            <Content
+              style={{ display: activeNav === "home" ? "block" : "none" }}
+            >
+              <ZonesHandler />
+            </Content>
           </div>
         </Content>
       </Layout>
