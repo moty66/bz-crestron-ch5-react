@@ -156,8 +156,8 @@ export const luciConfig: IFloor[] = [
           { name: "Segnapasso Terrazzo", index: 9, channel: 6 },
         ],
         tende: [
-          { name: "Scale SX", index: 9, channel: 0 },
-          { name: "Scale DX", index: 9, channel: 1 },
+          { name: "Scale P1", index: 9, channel: 0 },
+          // { name: "Scale DX", index: 9, channel: 1 },
           { name: "Disimpegno", index: 9, channel: 2 },
         ],
       },
@@ -179,7 +179,7 @@ export const luciConfig: IFloor[] = [
           { name: "Abatjour sx", index: 1, channel: 4 },
           { name: "Centrale", index: 1, channel: 5 },
           { name: "Balcone", index: 1, channel: 6 },
-          { name: "Segnapasso", index: 1, channel: 7 },
+          { name: "Segnapasso", index: 1, channel: 7, isOnOff: true },
           { name: "Ufficio", index: 1, channel: 8 },
         ],
         tende: [
@@ -227,11 +227,11 @@ export const luciConfig: IFloor[] = [
         luci: [
           { name: "Armadio", index: 6, channel: 0 },
           { name: "Scrivania", index: 6, channel: 1 },
-          { name: "Specchio", index: 6, channel: 2 },
+          { name: "Specchio", index: 6, channel: 2, isOnOff: true },
         ],
         tende: [
-          { name: "Terrazzo dx", index: 6, channel: 0 },
-          { name: "Terrazzo sx", index: 6, channel: 1 },
+          { name: "Terrazzo", index: 6, channel: 0 },
+          // { name: "Terrazzo sx", index: 6, channel: 1 },
         ],
       },
       {
@@ -239,7 +239,7 @@ export const luciConfig: IFloor[] = [
         luci: [
           { name: "Faretti e strip", index: 7, channel: 0 },
           { name: "Faretti", index: 7, channel: 1 },
-          { name: "Specchio", index: 7, channel: 2 },
+          { name: "Specchio", index: 7, channel: 2, isOnOff: true },
         ],
         tende: [{ name: "Terrazzo", index: 7, channel: 0 }],
       },
@@ -248,7 +248,7 @@ export const luciConfig: IFloor[] = [
         luci: [
           { name: "Faretti e strip", index: 8, channel: 0 },
           { name: "Faretti", index: 8, channel: 1 },
-          { name: "Specchio", index: 8, channel: 2 },
+          { name: "Specchio", index: 8, channel: 2, isOnOff: true },
         ],
         tende: [{ name: "Terrazzo", index: 8, channel: 0 }],
       },

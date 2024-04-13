@@ -17,11 +17,11 @@ const useWebXPanel = (params: WebXPanelConfig) => {
       isActive,
       WebXPanelEvents,
       WebXPanelConfigParams,
-      setLogLevel,
-      enableDebugging,
+      //setLogLevel,
+      //enableDebugging,
     } = window.WebXPanel.getWebXPanel(!window.WebXPanel.runsInContainerApp());
-    enableDebugging();
-    setLogLevel(0);
+    //enableDebugging();
+    //setLogLevel(0);
     setIsActive(isActive);
 
     const config: Partial<typeof WebXPanelConfigParams> = params;

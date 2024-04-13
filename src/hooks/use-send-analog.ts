@@ -24,7 +24,7 @@ export default function useSendAnalog(
 
   const sendAnalog: sendAnalog = (value) => {
     command && window.CrComLib.publishEvent("n", command.toString(), value);
-    setAnalogState(value);
+    //setAnalogState(value);
   };
 
   const toggleAnalog = () => {
