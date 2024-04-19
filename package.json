@@ -14,12 +14,12 @@
     "deploy:panel1": "ch5-cli deploy -H 192.168.179.12 -t touchscreen archive/casa-bz.ch5z --slow-mode",
     "deploy:panel2": "ch5-cli deploy -H 192.168.179.13 -t touchscreen archive/casa-bz.ch5z --slow-mode",
     "deploy:panel3": "ch5-cli deploy -H 192.168.179.14 -t touchscreen archive/casa-bz.ch5z --slow-mode",
-    "tutto": "source .env && npm run build:prod && npm run archive && npm run deploy:xpanel && npm run deploy:panel1 && npm run deploy:panel2 && npm run deploy:panel3",
+    "tutto": "npm run build:prod && npm run archive && npm run deploy:xpanel && npm run deploy:panel1 && npm run deploy:panel2 && npm run deploy:panel3",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@crestron/ch5-crcomlib": "^2.9.0",
+    "@crestron/ch5-crcomlib": "^2.8.0",
     "@crestron/ch5-webxpanel": "^2.8.0",
     "antd": "^5.15.4",
     "eruda": "^3.0.1",
@@ -27,7 +27,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@crestron/ch5-shell-utilities-cli": "^2.9.0",
+    "@crestron/ch5-shell-utilities-cli": "^2.8.0",
     "@crestron/ch5-utilities-cli": "^2.0.0",
     "@types/node": "^20.11.19",
     "@types/react": "^18.2.37",
@@ -35,6 +35,7 @@
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",
     "@vitejs/plugin-react": "^4.2.0",
+    "dotenv-cli": "^7.4.1",
     "eslint": "^8.53.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.4",

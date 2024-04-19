@@ -40,15 +40,17 @@ function App() {
   // };
 
   // PROD
-  const config = {
-    ipId: "0x03",
-    host: "192.168.179.5",
-    roomId: "",
-    authToken:
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsIlNvdXJjZSI6IkNvbnRyb2wgU3lzdGVtIn0.eyJleHAiOjE3MTI1NjM0NDEsInVzZXJuYW1lIjoiT2ZmbGluZVRva2VuIiwiT3B0aW9uYWwiOiIyMDI5OTY4OTk5In0.CacPpltp3EIgxPagq8Xz9SXPsi0MM_Cevimui8Tq5EY",
-  };
 
-  const webXPanelConfig = useMemo(() => config, []); // Dependencies array is empty, so this object is created only once
+  const webXPanelConfig = useMemo(
+    () => ({
+      ipId: "0x03",
+      host: "192.168.179.5",
+      roomId: "",
+      authToken:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsIlNvdXJjZSI6IkNvbnRyb2wgU3lzdGVtIn0.eyJleHAiOjE3MTI1NjM0NDEsInVzZXJuYW1lIjoiT2ZmbGluZVRva2VuIiwiT3B0aW9uYWwiOiIyMDI5OTY4OTk5In0.CacPpltp3EIgxPagq8Xz9SXPsi0MM_Cevimui8Tq5EY",
+    }),
+    []
+  ); // Dependencies array is empty, so this object is created only once
 
   useWebXPanel(webXPanelConfig);
 
