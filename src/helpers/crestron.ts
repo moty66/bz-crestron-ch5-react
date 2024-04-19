@@ -12,7 +12,10 @@ export function sendDigitalValue(id: string, value: boolean) {
   window.CrComLib.publishEvent("b", id, value);
 }
 
-export function sendDigitalPulse(id: string, pulseLength: number = 100) {
-  sendDigitalValue(id, true);
-  setTimeout(() => sendDigitalValue(id, false), pulseLength);
+export function sendDigitalPulse(
+  id: string | number,
+  pulseLength: number = 100
+) {
+  sendDigitalValue(id.toString(), true);
+  setTimeout(() => sendDigitalValue(id.toString(), false), pulseLength);
 }

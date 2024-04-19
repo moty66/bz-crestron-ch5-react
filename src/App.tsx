@@ -1,13 +1,11 @@
-import {
-  BellOutlined,
-  HomeOutlined,
-  SecurityScanOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons";
+import { BellOutlined, HomeOutlined, PictureOutlined } from "@ant-design/icons";
 import { Layout, Menu, theme } from "antd";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import "./assets/App.css";
+import Dashboard from "./components/dashboard/Dashboard";
+import Door from "./components/door/Door";
 import ZonesHandler from "./components/zones/zones-handler";
+import useSendDigital from "./hooks/use-send-digital";
 import useWebXPanel from "./hooks/useWebXPanel";
 
 const { Content, Sider } = Layout;
@@ -19,7 +17,15 @@ if (import.meta.env.VITE_APP_ENV === "development") {
 }
 
 function App() {
-  const [activeNav, setActiveNav] = useState("home");
+  const [activeNav, setActiveNav] = useState("dashboard");
+  const [doorBell] = useSendDigital("2");
+  useEffect(() => {
+    console.log("DoorBell", doorBell);
+    if (doorBell) {
+      setActiveNav("door");
+    }
+  }, [doorBell]);
+
   // const [digitalState, setDigitalState] = useState(false);
   // const [analogState, setAnalogState] = useState(0);
   // const [serialState, setSerialState] = useState("");
@@ -47,10 +53,11 @@ function App() {
   useWebXPanel(webXPanelConfig);
 
   const items = [
+    { icon: PictureOutlined, value: "dashboard" },
     { icon: HomeOutlined, value: "home" },
-    { icon: VideoCameraOutlined, value: "nav2" },
-    { icon: SecurityScanOutlined, value: "nav3" },
-    { icon: BellOutlined, value: "nav4" },
+    { icon: BellOutlined, value: "door" },
+    // { icon: VideoCameraOutlined, value: "nav2" },
+    // { icon: SecurityScanOutlined, value: "nav3" },
   ].map((el, index) => ({
     key: String(index + 1),
     icon: React.createElement(el.icon, {
@@ -110,6 +117,16 @@ function App() {
             >
               <ZonesHandler />
             </Content>
+            {activeNav === "door" && (
+              <Content>
+                <Door />
+              </Content>
+            )}
+            {activeNav === "dashboard" && (
+              <Content>
+                <Dashboard />
+              </Content>
+            )}
           </div>
         </Content>
       </Layout>

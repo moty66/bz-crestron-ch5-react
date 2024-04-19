@@ -106,7 +106,7 @@ const ZonesHandler: FunctionComponent<ZonesHandlerProps> = () => {
             backgroundColor: colorBgContainer,
           }}
         >
-          <Content style={{ margin: "0 16px" }}>
+          <Content>
             <Flex justify="space-between" style={{ minHeight: "92px" }}>
               <div>
                 <Flex style={{}}>

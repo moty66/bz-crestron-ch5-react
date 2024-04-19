@@ -1,0 +1,3 @@
+export const CONST_OPEN_WEATHER_MAP_API_KEY =
+  // "b98032803d90fc802c64f437dea09b7e";
+  "78328f33db2728d911a5fc6228ec1a80";
