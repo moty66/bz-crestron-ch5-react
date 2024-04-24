@@ -42,7 +42,7 @@ const Door: FunctionComponent<DoorProps> = () => {
           <Button
             size="large"
             type="primary"
-            onClick={() => sendDigitalPulse("Csig.Answer")}
+            onClick={() => sendDigitalPulse("Csig.Answer", 1000)}
           >
             Rispondi
           </Button>
@@ -50,7 +50,7 @@ const Door: FunctionComponent<DoorProps> = () => {
             size="large"
             danger
             type="primary"
-            onClick={() => sendDigitalPulse("Csig.Hangup")}
+            onClick={() => sendDigitalPulse("Csig.Hangup", 1000)}
           >
             Aggancia
           </Button>
