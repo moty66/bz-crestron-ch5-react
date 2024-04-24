@@ -1,9 +1,18 @@
 import { Button, Divider, Flex, Layout, theme } from "antd";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import { sendDigitalPulse } from "../../helpers/crestron";
 interface DoorProps {}
 
 const Door: FunctionComponent<DoorProps> = () => {
+  const [rand] = useState(Math.random());
+
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     sentRand(Math.random());
+  //   }, 500);
+  //   return () => clearInterval(interval);
+  // }, []);
+
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -20,7 +29,7 @@ const Door: FunctionComponent<DoorProps> = () => {
         <div>
           <img
             style={{ borderRadius: 16, width: 640, height: 480 }}
-            src="http://192.168.179.15/api/camera/snapshot?width=640&height=480&fps=12"
+            src={`http://192.168.179.15/api/camera/snapshot?width=640&height=480&fps=6&r=${rand}`}
           />
         </div>
         <Flex style={{}} vertical gap={32} justify="center">
@@ -33,7 +42,7 @@ const Door: FunctionComponent<DoorProps> = () => {
           <Button
             size="large"
             type="primary"
-            onClick={() => sendDigitalPulse("Csig.Auto_Answer")}
+            onClick={() => sendDigitalPulse("Csig.Answer")}
           >
             Rispondi
           </Button>

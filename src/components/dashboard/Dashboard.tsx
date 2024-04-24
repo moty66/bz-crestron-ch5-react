@@ -15,7 +15,7 @@ const Dashboard: FunctionComponent<DashboardProps> = () => {
         gap: "32px",
       }}
     >
-      <div
+      {/* <div
         style={{
           width: "480px",
           flex: "1 0 auto",
@@ -34,9 +34,9 @@ const Dashboard: FunctionComponent<DashboardProps> = () => {
             border: "none",
             pointerEvents: "none",
           }}
-          src="/weather-iframe.html"
+          src="weather-iframe.html"
         ></iframe>
-      </div>
+      </div> */}
       <div style={{ flexGrow: 1, paddingTop: "64px" }}>
         <h2 style={{ marginBottom: "64px" }}>Comandi rapidi</h2>
         <Flex gap={16}>

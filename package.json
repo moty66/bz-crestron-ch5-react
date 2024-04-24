@@ -19,8 +19,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@crestron/ch5-crcomlib": "^2.8.0",
-    "@crestron/ch5-webxpanel": "^2.8.0",
+    "@crestron/ch5-crcomlib": "2.8.0",
+    "@crestron/ch5-webxpanel": "2.8.0",
     "antd": "^5.15.4",
     "eruda": "^3.0.1",
     "react": "^18.2.0",
